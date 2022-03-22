@@ -11,29 +11,29 @@ It's a small command line tool that accepts the usual .Net compatible image type
 
 
 # Command line tool parameters
-bumpToNormal HeightMap NormalMap BentName AOName RayCount RayLength RayStrength
+    bumpToNormal HeightMap NormalMap BentName AOName RayCount RayLength RayStrength
 
-  HeightMap
-        The filename of the **input** height map.
+      HeightMap
+            The filename of the **input** height map.
 
-  NormalMap
-        The filename of the **input** normal map, if it doesn't exist
-        the normal map is created and saved with the provided filename.
+      NormalMap
+            The filename of the **input** normal map, if it doesn't exist
+            the normal map is created and saved with the provided filename.
 
-  BentName
-        The filename of the **output** bent normal map.
+      BentName
+            The filename of the **output** bent normal map.
 
-  AmbientName
-        The filename of the **output** ambient occlusion map.
+      AmbientName
+            The filename of the **output** ambient occlusion map.
 
-  RayCount
-        Rays around a circle to be used to calcualte the nearest horizon.
+      RayCount
+            Rays around a circle to be used to calcualte the nearest horizon.
 
-  RayLength
-        How many pixels to step when searching for the nearest horizon.
+      RayLength
+            How many pixels to step when searching for the nearest horizon.
 
-  RayStrength
-        How much influence a single ray has on the ambient occlusion.
+      RayStrength
+            How much influence a single ray has on the ambient occlusion.
 
-Example:
-BentNormals height.jpg normal.jpg bent.png ao.png 60 40 30
+    Example:
+    BentNormals height.jpg normal.jpg bent.png ao.png 60 40 30
