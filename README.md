@@ -4,6 +4,7 @@ MUCH smoother than the equivalent in Adobe Substance Designer - AND doesn't prod
 The noise added to the Substance node appears to be to hide the banding caused by rounding issues in the process.
 
 You can provide just the height map, OR the height map and normal map... the program will produce the needed files.
+Here is what is produced from running the batch file in the Binary folder:
 ![image](https://user-images.githubusercontent.com/1586332/159546304-d49ebb8f-7012-4c4a-8b68-616f66dd65ba.png)
 
 
