@@ -11,7 +11,7 @@ It's a small command line tool that accepts the usual .Net compatible image type
 
 
 # Command line tool parameters
-    bumpToNormal HeightMap NormalMap BentName AOName RayCount RayLength RayStrength
+    bumpToNormal.exe HeightMap NormalMap BentName AOName RayCount RayLength RayStrength
 
       HeightMap
             The filename of the **input** height map.
@@ -36,4 +36,4 @@ It's a small command line tool that accepts the usual .Net compatible image type
             How much influence a single ray has on the ambient occlusion.
 
     Example:
-    BentNormals height.jpg normal.jpg bent.png ao.png 60 40 30
+    BentNormals.exe height.jpg normal.jpg bent.png ao.png 60 40 30
