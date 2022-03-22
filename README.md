@@ -2,6 +2,9 @@
 Make smooth normal maps and bent normal's from a height map - or in other words self-shadowing normals!              
 Demo: https://www.youtube.com/watch?v=e1e6o7KlhEM             
 
+![image](https://user-images.githubusercontent.com/1586332/159548992-cfb54059-b5af-4249-842e-0b7b053e2dbf.png)
+
+
 MUCH smoother than the equivalent in Adobe Substance Designer - AND doesn't produce banding.                               
 The noise added to the Substance node appears to be in order to hide the banding caused by rounding issues in the (very fast) process.
 
