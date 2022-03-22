@@ -12,7 +12,7 @@ This project is an extension of this bent normal map creator:
 https://blenderartists.org/t/self-shadowing-normal-maps/604178
 http://web.archive.org/web/20220318173921/https://blenderartists.org/t/self-shadowing-normal-maps/604178
 
-It's not optimised, but I did dump the process into multiple cores to speed it up without much work.
+It's not optimised, but I did dump the process into multiple cores to speed it up without creating too much work for myself.
 
 It's a small command line tool that accepts the usual .Net compatible image types - BMP, PNG, JPG etc..., the outputs are all PNG.
 
