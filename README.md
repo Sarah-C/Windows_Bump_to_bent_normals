@@ -11,6 +11,7 @@ It's a small command line tool that accepts the usual .Net compatible image type
 
 
 # Command line tool parameters
+If you don't supply all 7 parameters, the program will display the help-page parameter list.
     bumpToNormal.exe HeightMap NormalMap BentName AOName RayCount RayLength RayStrength
 
       HeightMap
@@ -26,13 +27,13 @@ It's a small command line tool that accepts the usual .Net compatible image type
       AmbientName
             The filename of the **output** ambient occlusion map.
 
-      RayCount
-            Rays around a circle to be used to calcualte the nearest horizon.
+      RayCount   (Roughly 10 to 360, 90 is a good value)
+            Rays cast equally angled around a circle to be used to calcualte the nearest horizon. If you specify 10, that's 360/10 = 36 degrees between per ray. More rays give a more accurate result but takes a lot longer.
 
-      RayLength
-            How many pixels to step when searching for the nearest horizon.
+      RayLength   (In pixels, so a 500px wide texture wouldn't need this higher than perhaps 100 to get close-by features, 4K would need around 500 or more)
+            The maximum number of pixels to examine away from the current point when searching for the nearest horizon. If you're processing a 4K texture, this needs to be scaled up accordingly as 40 pixel length may not reach important bumps in your heightmap.
 
-      RayStrength
+      RayStrength (0 to 100)
             How much influence a single ray has on the ambient occlusion.
 
     Example:
