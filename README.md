@@ -2,6 +2,7 @@
 Make smooth normal maps and bent normal's from a height map - or in other words self-shadowing normals!              
 Demo: https://www.youtube.com/watch?v=e1e6o7KlhEM             
 
+On the left are the "self shadowing" bent normals, and on the right are the standard normals.
 ![image](https://user-images.githubusercontent.com/1586332/159548992-cfb54059-b5af-4249-842e-0b7b053e2dbf.png)
 
 
