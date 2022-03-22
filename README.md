@@ -1,7 +1,7 @@
 # Windows: Bump map to bent normals, smoother than Substance Designers.
 Make smooth normal maps and bent normal's from a height map.                   
 MUCH smoother than the equivalent in Adobe Substance Designer - AND doesn't produce banding.                               
-The noise added to the Substance node appears to be to hide the banding caused by rounding issues in the process.
+The noise added to the Substance node appears to be in order to hide the banding caused by rounding issues in the (very fast) process.
 
 You can provide just the height map, OR the height map and normal map... the program will produce the needed files.           
 Here is what is produced from running the batch file in the Binary folder:
