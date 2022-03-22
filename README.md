@@ -1,5 +1,11 @@
 # Windows_Bump_to_bent_normals
-Make smooth normal maps and bent normal's from a height map.
+Make smooth normal maps and bent normal's from a height map.                   
+MUCH smoother than the equivalent in Adobe Substance Designer - AND doesn't produce banding.                               
+The noise added to the Substance node appears to be to hide the banding caused by rounding issues in the process.
+
+You can provide just the height map, OR the height map and normal map... the program will produce the needed files.
+![image](https://user-images.githubusercontent.com/1586332/159546304-d49ebb8f-7012-4c4a-8b68-616f66dd65ba.png)
+
 
 This project is an extension of this bent normal map creator:
 https://blenderartists.org/t/self-shadowing-normal-maps/604178
