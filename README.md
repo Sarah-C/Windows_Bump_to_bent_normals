@@ -10,6 +10,8 @@ Here is what is produced from running the batch file in the Binary folder:
 
 This project is an extension of this bent normal map creator:
 https://blenderartists.org/t/self-shadowing-normal-maps/604178
+https://www.gamedev.net/forums/topic/557465-self-shadowing-normal-maps/
+
 http://web.archive.org/web/20220318173921/https://blenderartists.org/t/self-shadowing-normal-maps/604178
 
 It's not optimised, but I did dump the process into multiple cores to speed it up without creating too much work for myself.
