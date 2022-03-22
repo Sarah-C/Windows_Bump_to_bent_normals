@@ -8,15 +8,15 @@ Here is what is produced from running the batch file in the Binary folder:
 ![image](https://user-images.githubusercontent.com/1586332/159546304-d49ebb8f-7012-4c4a-8b68-616f66dd65ba.png)
 
 
-This project is an extension of this bent normal map creator:
-https://blenderartists.org/t/self-shadowing-normal-maps/604178
-https://www.gamedev.net/forums/topic/557465-self-shadowing-normal-maps/
+This project is an extension of this bent normal map creator:                  
+https://blenderartists.org/t/self-shadowing-normal-maps/604178           
+https://www.gamedev.net/forums/topic/557465-self-shadowing-normal-maps/          
+http://web.archive.org/web/20220318173921/https://blenderartists.org/t/self-shadowing-normal-maps/604178               
+http://web.archive.org/save/https://www.gamedev.net/forums/topic/557465-self-shadowing-normal-maps/              
 
-http://web.archive.org/web/20220318173921/https://blenderartists.org/t/self-shadowing-normal-maps/604178
-
-It's not optimised, but I did dump the process into multiple cores to speed it up without creating too much work for myself.
-
-It's a small command line tool that accepts the usual .Net compatible image types - BMP, PNG, JPG etc..., the outputs are all PNG.
+It's not optimised, but I did dump the process into multiple cores to speed it up without creating too much work for myself.                  
+                   
+It's a small command line tool that accepts the usual .Net compatible image types - BMP, PNG, JPG etc..., the outputs are all PNG.                  
 
 
 # Command line tool parameters
