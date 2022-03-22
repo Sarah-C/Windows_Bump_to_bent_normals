@@ -27,6 +27,7 @@ It's a small command line tool that accepts the usual .Net compatible image type
 
 # Command line tool parameters
 If you don't supply all 7 parameters, the program will display the help-page parameter list.
+
     bumpToNormal.exe HeightMap NormalMap BentName AOName RayCount RayLength RayStrength
 
       HeightMap
