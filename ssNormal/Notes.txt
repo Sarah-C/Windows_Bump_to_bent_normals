@@ -1,0 +1,8 @@
+open cmd go to ssNormal folder and type
+
+convert.exe normal.tga height.tga 30 60 10
+
+
+replace normal and height with your corresponding file names
+
+TGAs must be uncompressed. 3 numbers are raycast count, raycast length in pixels, and strength (0-100). For count/length, 30/60 gets good quality.

@@ -1,0 +1,18 @@
+C:\Users\Sarahc\Documents\Visual Studio 2010\Projects\bumpToNormal\bumpToNormal\obj\x86\Debug\bumpToNormal.Resources.resources
+C:\Users\Sarahc\Documents\Visual Studio 2010\Projects\bumpToNormal\bumpToNormal\obj\x86\Debug\bumpToNormal.vbproj.GenerateResource.Cache
+C:\Users\Sarahc\Documents\Visual Studio 2010\Projects\bumpToNormal\bumpToNormal\bin\Debug\bumpToNormal.exe
+C:\Users\Sarahc\Documents\Visual Studio 2010\Projects\bumpToNormal\bumpToNormal\bin\Debug\bumpToNormal.pdb
+C:\Users\Sarahc\Documents\Visual Studio 2010\Projects\bumpToNormal\bumpToNormal\bin\Debug\bumpToNormal.xml
+C:\Users\Sarahc\Documents\Visual Studio 2010\Projects\bumpToNormal\bumpToNormal\obj\x86\Debug\bumpToNormal.exe
+C:\Users\Sarahc\Documents\Visual Studio 2010\Projects\bumpToNormal\bumpToNormal\obj\x86\Debug\bumpToNormal.xml
+C:\Users\Sarahc\Documents\Visual Studio 2010\Projects\bumpToNormal\bumpToNormal\obj\x86\Debug\bumpToNormal.pdb
+C:\Users\Sarah\source\repos\bumpToNormal\bumpToNormal\bin\Debug\bumpToNormal.exe
+C:\Users\Sarah\source\repos\bumpToNormal\bumpToNormal\bin\Debug\bumpToNormal.pdb
+C:\Users\Sarah\source\repos\bumpToNormal\bumpToNormal\bin\Debug\bumpToNormal.xml
+C:\Users\Sarah\source\repos\bumpToNormal\bumpToNormal\obj\x86\Debug\bumpToNormal.vbproj.AssemblyReference.cache
+C:\Users\Sarah\source\repos\bumpToNormal\bumpToNormal\obj\x86\Debug\bumpToNormal.Resources.resources
+C:\Users\Sarah\source\repos\bumpToNormal\bumpToNormal\obj\x86\Debug\bumpToNormal.vbproj.GenerateResource.cache
+C:\Users\Sarah\source\repos\bumpToNormal\bumpToNormal\obj\x86\Debug\bumpToNormal.vbproj.CoreCompileInputs.cache
+C:\Users\Sarah\source\repos\bumpToNormal\bumpToNormal\obj\x86\Debug\bumpToNormal.exe
+C:\Users\Sarah\source\repos\bumpToNormal\bumpToNormal\obj\x86\Debug\bumpToNormal.xml
+C:\Users\Sarah\source\repos\bumpToNormal\bumpToNormal\obj\x86\Debug\bumpToNormal.pdb

@@ -1,0 +1,254 @@
+﻿#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+#define min(x,y) ((x)<(y)?(x):(y))
+#define max(x,y) ((x)>(y)?(x):(y))
+#define clamp(x,low,high) ( min(max(x,low),high) )
+
+
+int fsize (FILE * fp)
+{
+  fseek(fp, 0, SEEK_END);
+  int end = ftell(fp);
+  rewind(fp);
+  return end;
+}
+
+// image class
+
+class TGAImage
+{
+  public:
+    struct TGAHeader
+    {
+      unsigned char head[12];
+      unsigned short w;
+      unsigned short h;
+      unsigned char bpp;
+      char nothing;
+    };
+
+    TGAImage(const char * filename)
+    {
+      // copy the data
+
+      FILE *infile=fopen(filename,"rb");
+      filesize=fsize(infile);
+      filedata=new unsigned char[filesize];
+      fread(filedata,filesize,1,infile);
+      fclose(infile);
+      
+      unsigned char tga_header_gray[12] = {0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0}; 
+      unsigned char tga_header_rgb[12] = { 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+      
+      TGAHeader *header=(TGAHeader *)filedata;
+      width = header->w;
+      height = header->h;
+            
+      bpp = header->bpp/8;
+      image = filedata+sizeof(TGAHeader);
+      
+      // check that it is a tga i know how to read
+      if (memcmp(header->head, tga_header_rgb, 12) && memcmp(header->head, tga_header_gray, 12))
+      {
+        printf("failed loading tga %s\n",filename);        
+      }
+    }
+
+    void Write(const char *filename)
+    {
+      FILE* outfile=fopen(filename,"wb");
+      fwrite(filedata,filesize,1,outfile);
+      fclose(outfile);
+    }
+
+    ~TGAImage()
+    {
+      delete filedata;
+    }
+
+    int BytesPerPixel() { return bpp; }
+    int Width() { return width; }
+    int Height() { return height; }
+    unsigned char* Pixel(int row,int col)
+    {
+      return image+bpp*(width*((row+height)%height)+(col+width)%width); 
+    }
+
+  private:
+
+    int width;
+    int height;
+    int bpp;
+    unsigned char *filedata;
+    int  filesize;
+    unsigned char *image;
+};
+
+
+void swap(int& a, int& b)
+{
+  int t=a;
+  a=b;
+  b=t;
+}
+
+
+// find highest elevation angle in height map along a line
+float raycast(TGAImage& height,int y0,int x0,float angle, int length)
+{
+
+  int baserow=y0;
+  int basecol=x0;
+  int startingheight=height.Pixel(baserow,basecol)[0];
+
+  int x1 = x0+cos(angle)*length;
+  int y1 = y0+sin(angle)*length;
+
+  bool steep = abs(y1 - y0) > abs(x1 - x0);
+
+  if(steep)
+  {
+    swap(x0, y0);
+    swap(x1, y1);
+  }
+
+  if(x0>x1)
+  {
+    swap(x0, x1);
+    swap(y0, y1);
+  }
+
+  int deltax = x1 - x0;
+  int deltay = abs(y1 - y0);
+  int error = deltax / 2;
+  int y = y0;
+  int ystep = (y0<y1)? 1 : -1;
+  float maxelevation=0;
+
+  for(int x=x0;x<=x1;x++)
+  {
+    int row,col;
+    if(steep)
+    {
+      row=x;
+      col=y;
+    }
+    else
+    {
+      row=y;
+      col=x;
+    }
+
+    if(baserow!=row || basecol!=col) // ignore first pixel
+    {
+      float distance=sqrt((row-baserow)*(row-baserow)+(col-basecol)*(col-basecol));
+      maxelevation = max(maxelevation,(float)(height.Pixel(row,col)[0]-startingheight)/distance);
+
+      error = error - deltay;
+      if(error < 0)
+      {
+        y = y + ystep;
+        error = error + deltax;
+      }
+    }
+  }
+
+  return maxelevation;
+}
+
+
+int main(int argc, char **argv)
+{
+  if(argc != 6)
+  {
+    printf("usage: %s normal.tga height.tga raycount raylength strength\n",argv[0]);
+    exit(1);
+  }
+
+  char* normalFileName=argv[1];
+  char* heightFileName=argv[2];
+  int raycount=atoi(argv[3]);
+  int raylength=atoi(argv[4]);
+  float strength=0.01*(float)atoi(argv[5]);
+
+
+  printf("processing:\n\t\tnormal:   %s\n\theight:   %s\n\traycount:    %d\n\traylength:    %d\n\tstrength:        %f\n",normalFileName,heightFileName,raycount,raylength,strength);
+
+  TGAImage normal(normalFileName);
+  TGAImage height(heightFileName);
+
+
+  float anglestep=2*M_PI/raycount; 
+
+  int w = height.Width();
+  int h = height.Height();
+
+  unsigned char *aoimage=new unsigned char[w*h];
+
+  for(int row=0;row<h;row++)
+  {
+    for(int col=0;col<w;col++)
+    {
+      float xsum=0.f;
+      float ysum=0.f;
+
+      float averagex=0.0;
+      float averagey=0.0;
+      float averagetotal=0.0;
+
+      for(float a=0;a<2*M_PI;a+=anglestep)
+      {
+        float xdir = cos(a);
+        float ydir = sin(a);
+
+        xsum += fabs(xdir);
+        ysum += fabs(ydir);
+
+        float ray=raycast(height,row,col, a, raylength);
+
+        averagetotal+=ray;
+        averagex += xdir*ray; 
+        averagey += ydir*ray;
+      }
+
+      averagex/=xsum;
+      averagey/=ysum;
+
+      // scale normal map x and y parts
+
+      float normalx= normal.Pixel(row,col)[2]/128.0 -1.0; 
+      float normaly= normal.Pixel(row,col)[1]/128.0 -1.0; 
+
+      normalx -= strength*averagex;
+      normaly -= strength*averagey;
+
+      normal.Pixel(row,col)[2] = clamp(normalx*128+128,0,255);
+      normal.Pixel(row,col)[1] = clamp(normaly*128+128,0,255);
+
+      // compute average ao
+      averagetotal/=raycount;
+      aoimage[w*row+col]=clamp(255.0-10*strength*averagetotal,0,255);
+    }
+  }
+
+  normal.Write("bentnormals.tga");
+
+
+  for(int row=0;row<h;row++)
+  {
+    for(int col=0;col<w;col++)
+    {
+      for(int channel=0;channel<height.BytesPerPixel();channel++)
+      {
+        height.Pixel(row,col)[channel]=aoimage[w*row+col];
+      }
+    }
+  }
+
+  height.Write("ao.tga");
+
+  delete aoimage;
+}
